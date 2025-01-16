@@ -168,6 +168,10 @@ Admins can:
 3. **Copilot Integration**: Automates recommendations and retrieves project/Kubernetes data.
 4. **Worker Service**: Facilitates CI/CD modifications and Kubernetes deployments.
 5. **AI Agent Service**: Uses LangFlow/Flowise for intelligent recommendations and natural language processing.
- 
 
+### **Tech Stack**
+1. NodeJs
+2. ExpressJs
+3. Bootrap 4
+5. AlpineJs for dynamic frontend
  
