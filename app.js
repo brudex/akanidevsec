@@ -38,7 +38,7 @@ app.use(session({
 // Flash messages middleware
 app.use(flash());
 
-// Make user available to all templates
+// Make user and path available to all templates
 app.use((req, res, next) => {
     // For development, always set mock user
     if (process.env.NODE_ENV !== 'production') {
@@ -48,6 +48,7 @@ app.use((req, res, next) => {
     
     res.locals.user = req.session.user;
     res.locals.messages = req.flash();
+    res.locals.path = req.path; // Make path available to all templates
     next();
 });
 

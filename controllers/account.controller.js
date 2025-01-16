@@ -2,7 +2,6 @@ const db = require("../models/index");
 const passport = require("passport");
 const Joi = require("joi");
 const debug = require("debug")("nla-app:account-controller");
-const activityLogController = require("./activitylog.controller");
 const uuid = require('uuid');
 const bcrypt = require("bcryptjs");
 const Controller = {};

@@ -2,126 +2,180 @@
 .dashboard-container {
     display: flex;
     min-height: 100vh;
+    background: #f8f9fa;
 }
 
-/* Sidebar Styles */
+/* Sidebar */
 .dashboard-sidebar {
-    width: 260px;
-    background: #2c3e50;
-    color: #ecf0f1;
+    width: 280px;
+    background: linear-gradient(180deg, #003366 0%, #002347 100%);
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
     transition: all 0.3s ease;
-    flex-shrink: 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-header {
-    padding: 1.5rem;
+    padding: 1.75rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .sidebar-header .logo {
+    font-size: 1.75rem;
+    font-weight: 700;
     margin: 0;
-    font-size: 1.5rem;
-    color: #ecf0f1;
+    color: #ffffff;
+    letter-spacing: 0.5px;
 }
 
 .sidebar-nav {
-    padding: 1rem 0;
+    padding: 1.25rem 0;
 }
 
-.sidebar-nav .nav-link {
-    color: #ecf0f1;
-    padding: 0.75rem 1.5rem;
+.nav-item {
+    margin: 0.25rem 0;
+}
+
+.nav-link {
+    padding: 0.875rem 1.75rem;
+    color: rgba(255, 255, 255, 0.8);
     display: flex;
     align-items: center;
+    gap: 1rem;
     transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+    position: relative;
 }
 
-.sidebar-nav .nav-link i {
+.nav-link i {
     width: 20px;
-    margin-right: 10px;
+    text-align: center;
+    font-size: 1.1rem;
 }
 
-.sidebar-nav .nav-link:hover {
+.nav-link:hover {
+    color: #ffffff;
     background: rgba(255, 255, 255, 0.1);
+    border-left-color: #66CC66;
 }
 
-.sidebar-nav .nav-link.active {
-    background: rgba(255, 255, 255, 0.2);
+.nav-link.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-left-color: #66CC66;
+    font-weight: 500;
 }
 
+/* Submenu styles */
 .submenu {
-    padding-left: 1rem;
+    padding-left: 3.5rem;
     background: rgba(0, 0, 0, 0.1);
+}
+
+.submenu .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
 }
 
 .submenu-icon {
     margin-left: auto;
     transition: transform 0.3s ease;
+    font-size: 0.8rem;
 }
 
-.collapse.show .submenu-icon {
-    transform: rotate(180deg);
+.collapse:not(.show) {
+    display: none;
 }
 
-/* Header Styles */
-.dashboard-header {
-    height: 60px;
-    background: #fff;
-    border-bottom: 1px solid #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar-toggle {
-    background: none;
-    border: none;
-    color: #2c3e50;
-    font-size: 1.25rem;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-.profile-button {
-    background: none;
-    border: none;
-    color: #2c3e50;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.profile-button i {
-    font-size: 1.5rem;
+.collapse.show {
+    display: block;
 }
 
 /* Main Content */
 .main-content {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    margin-left: 280px;
+    min-height: 100vh;
     background: #f8f9fa;
 }
 
-.content-wrapper {
-    padding: 1.5rem;
-    flex: 1;
-    overflow-y: auto;
+/* Dashboard Header */
+.dashboard-header {
+    background: #ffffff;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e9ecef;
+    height: 70px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: #003366;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    color: #004080;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-button {
+    background: #003366;
+    border: none;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.profile-button:hover,
+.profile-button:focus {
+    background: #004080;
+    color: #ffffff;
+}
+
+.profile-button i {
+    font-size: 1.25rem;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    padding: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
     .dashboard-sidebar {
-        position: fixed;
-        left: -260px;
-        height: 100vh;
-        z-index: 1000;
+        transform: translateX(-100%);
     }
     
     .dashboard-sidebar.show {
-        left: 0;
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
     }
     
     .sidebar-overlay {

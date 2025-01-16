@@ -10,16 +10,17 @@ document.addEventListener('DOMContentLoaded', function() {
     copilotToggle.addEventListener('click', function() {
         copilotPanel.classList.add('show');
         copilotToggle.style.display = 'none';
+        copilotInput.focus();
     });
 
     // Close copilot panel
     copilotClose.addEventListener('click', function() {
         copilotPanel.classList.remove('show');
-        copilotToggle.style.display = 'block';
+        copilotToggle.style.display = 'flex';
     });
 
     // Handle message submission
-    copilotForm.addEventListener('submit', function(e) {
+    copilotForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         const message = copilotInput.value.trim();
         if (!message) return;
@@ -28,10 +29,25 @@ document.addEventListener('DOMContentLoaded', function() {
         addMessage(message, 'user');
         copilotInput.value = '';
 
-        // Simulate copilot response
-        setTimeout(() => {
-            addMessage('I received your message: ' + message, 'copilot');
-        }, 1000);
+        try {
+            const response = await fetch('/copilot/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                addMessage(data.response, 'copilot');
+            } else {
+                throw new Error(data.message);
+            }
+        } catch (error) {
+            addMessage('Sorry, I encountered an error. Please try again.', 'copilot');
+            console.error('Copilot error:', error);
+        }
     });
 
     function addMessage(text, type) {

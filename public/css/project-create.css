@@ -1,0 +1,106 @@
+/* Step Indicators */
+.step-indicators {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    position: relative;
+    padding-right: 2rem;
+}
+
+.step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1px;
+    background: var(--gray-300);
+}
+
+.step.active {
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
+.step.completed {
+    color: var(--primary-green);
+}
+
+/* Form Steps */
+.form-step {
+    transition: all 0.3s ease;
+}
+
+/* Service Items */
+.service-item {
+    border: 1px solid var(--gray-200);
+    border-radius: 0.5rem;
+    position: relative;
+}
+
+.service-item .remove-service {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+/* Microservices */
+.microservices-container {
+    background: var(--gray-100);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.microservice-item {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Review Section */
+.review-section {
+    background: var(--gray-100);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.review-section dl {
+    margin: 0;
+}
+
+.review-section dt {
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+
+.review-section dd {
+    margin-bottom: 1rem;
+}
+
+/* Validation Styles */
+.was-validated .form-control:valid,
+.was-validated .form-select:valid {
+    border-color: var(--primary-green);
+}
+
+.was-validated .form-control:invalid,
+.was-validated .form-select:invalid {
+    border-color: #dc3545;
+}
+
+/* Tooltips */
+.form-label i {
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    margin-left: 0.25rem;
+    cursor: help;
+}
