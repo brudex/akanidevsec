@@ -1,0 +1,84 @@
+<aside class="dashboard-sidebar">
+    <div class="sidebar-header">
+        <h1 class="logo">DevSecOps</h1>
+    </div>
+    
+    <nav class="sidebar-nav">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link <%= path === '/dashboard' ? 'active' : '' %>" href="/dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link <%= path.startsWith('/projects') ? 'active' : '' %>" 
+                   data-bs-toggle="collapse" 
+                   href="#projectsSubmenu">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                    <i class="fas fa-chevron-down submenu-icon"></i>
+                </a>
+                <div class="collapse <%= path.startsWith('/projects') ? 'show' : '' %>" id="projectsSubmenu">
+                    <ul class="nav flex-column submenu">
+                        <li class="nav-item">
+                            <a class="nav-link <%= path === '/projects' ? 'active' : '' %>" href="/projects">
+                                <i class="fas fa-list"></i>
+                                <span>View All</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <%= path === '/projects/create' ? 'active' : '' %>" href="/projects/create">
+                                <i class="fas fa-plus"></i>
+                                <span>Create New</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link <%= path.startsWith('/deployment') ? 'active' : '' %>" 
+                   data-bs-toggle="collapse" 
+                   href="#deploymentSubmenu">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Deployment</span>
+                    <i class="fas fa-chevron-down submenu-icon"></i>
+                </a>
+                <div class="collapse <%= path.startsWith('/deployment') ? 'show' : '' %>" id="deploymentSubmenu">
+                    <ul class="nav flex-column submenu">
+                        <li class="nav-item">
+                            <a class="nav-link <%= path === '/deployment/environments' ? 'active' : '' %>" 
+                               href="/deployment/environments">
+                                <i class="fas fa-server"></i>
+                                <span>Environments</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link <%= path === '/deployment/configurations' ? 'active' : '' %>" 
+                               href="/deployment/configurations">
+                                <i class="fas fa-cogs"></i>
+                                <span>Configurations</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link <%= path.startsWith('/copilot') ? 'active' : '' %>" href="/copilot">
+                    <i class="fas fa-robot"></i>
+                    <span>Copilot</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link <%= path.startsWith('/settings') ? 'active' : '' %>" href="/settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>

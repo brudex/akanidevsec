@@ -1,17 +1,28 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+
+// Import route modules
 const pageRoutes = require('./page.routes');
+const apiRoutes = require('./api.routes');
+const copilotRoutes = require('./copilot.routes');
 const authRoutes = require('./auth.routes');
-const dashboardRoutes = require('./dashboard.routes');
-const apiRoutes = require('./api');
+const adminRoutes = require('./admin.routes');
 
+// Auth middleware
+const { isAuthenticated } = require('../middlewares/auth.middleware');
+
+// Public routes
 router.use('/', pageRoutes);
-router.use('/auth', authRoutes);
-router.use('/dashboard', dashboardRoutes);
 router.use('/api', apiRoutes);
+router.use('/auth', authRoutes);
 
-router.get("*", (req, res) => {
-    res.render("404", { layout: false });
+// Protected routes
+router.use('/copilot', isAuthenticated, copilotRoutes);
+router.use('/admin', isAuthenticated, adminRoutes);
+
+// 404 handler
+router.get('*', (req, res) => {
+    res.render('404', { layout: false });
 });
 
 module.exports = router;

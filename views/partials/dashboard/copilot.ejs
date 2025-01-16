@@ -1,0 +1,38 @@
+<div class="copilot-container">
+    <!-- Floating Copilot Button -->
+    <button id="copilotToggle" class="copilot-toggle">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- Copilot Chat Panel -->
+    <div id="copilotPanel" class="copilot-panel">
+        <div class="copilot-header">
+            <h5 class="mb-0">AI Copilot</h5>
+            <button class="btn-close" id="copilotClose"></button>
+        </div>
+        
+        <div class="copilot-messages" id="copilotMessages">
+            <div class="message copilot">
+                <div class="message-content">
+                    <i class="fas fa-robot message-avatar"></i>
+                    <div class="message-bubble">
+                        Hi! I'm your AI Copilot. How can I help you today?
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copilot-input">
+            <form id="copilotForm" class="d-flex gap-2">
+                <input type="text" 
+                       class="form-control" 
+                       id="copilotInput" 
+                       placeholder="Ask me anything..."
+                       autocomplete="off">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
